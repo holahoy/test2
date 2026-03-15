@@ -1,25 +1,35 @@
-class Human:
-    def __init__(self, name = "Human"):
-        self.name = name
+import math
 
-class Auto:
-    def __init__(self, brand):
-        self.brand = brand
-        self.passengers = []
-    def add_passengers(self, *args):
-        for passengers in args:
-            self.passengers.append(passengers)
-    def print_passengers_names(self):
-        if self.passengers != []:
-            print(f"Names of {self.brand} passengers:")
-            for passengers in self.passengers:
-                print(passengers.name)
-        else:
-            print("Aint passengers")
+class Shape:
+    def __init__(self, color="Transparent"):
+        self.color = color
 
-nick = Human("Nick")
-kate = Human("Kate")
-car = Auto("Mercedes")
+    def area(self):
+        pass
 
-car.add_passengers(nick, kate)
-car.print_passengers_names()
+
+class Circle(Shape):
+    def __init__(self, radius, color="Transparent"):
+        super().__init__(color)
+        self.radius = radius
+
+    def area(self):
+        return math.pi * self.radius ** 2
+
+
+class Rectangle(Shape):
+    def __init__(self, width, height, color="Transparent"):
+        super().__init__(color)
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+
+circle = Circle(5, "red")
+rect = Rectangle(4, 6, "blue")
+
+print(circle.area())
+print(rect.area())
+print(circle.color)
